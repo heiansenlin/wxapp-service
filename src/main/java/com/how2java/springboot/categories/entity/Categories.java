@@ -1,5 +1,8 @@
 package com.how2java.springboot.categories.entity;
 
+/**
+ * 分类
+ */
 public class Categories {
     private String id;          //主键
     private String name;        //名称

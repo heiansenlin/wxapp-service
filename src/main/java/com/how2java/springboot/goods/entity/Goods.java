@@ -1,5 +1,8 @@
 package com.how2java.springboot.goods.entity;
 
+/**
+ * 商品
+ */
 public class Goods {
     private String id;
     private String name;    //名称

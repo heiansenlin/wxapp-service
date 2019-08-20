@@ -1,5 +1,8 @@
 package com.how2java.springboot.channel.entity;
 
+/**
+ * 渠道/门店
+ */
 public class Channel {
     private String id;
     private String name;    //名称

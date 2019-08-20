@@ -1,5 +1,8 @@
 package com.how2java.springboot.login.entity;
 
+/**
+ * 登录用户
+ */
 public class Login {
     private String uuid;
     private String openId;
