@@ -24,11 +24,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public int save(String goodsAndNum, String openId, String channelId, String addressId) {
+    public int save(String goodsAndNum, String userId, String channelId, String addressId) {
         ArrayList<OrderGoods> list = new ArrayList<>();
         LocalDateTime now = LocalDateTime.now();
         long orderSn = now.toInstant(ZoneOffset.of("+8")).toEpochMilli();
         String[] split = goodsAndNum.split(";");
+        int save = 0;
         for (String s:split){
             String[] split1 = s.split(",");
             OrderGoods orderGoods = new OrderGoods();
@@ -37,12 +38,12 @@ public class OrderServiceImpl implements OrderService {
             orderGoods.setNum(split1[1]);
             orderGoods.setCreateTime(now);
             orderGoods.setOrderSn(Long.toString(orderSn));
-            int save = orderGoodsService.save(orderGoods);
+            save = orderGoodsService.save(orderGoods);
         }
         Order order = new Order();
         order.setId(UUID.randomUUID().toString());
         order.setOrderSn(Long.toString(orderSn));
-        order.setOpenId(openId);
+        order.setUserId(userId);
         order.setChannelId(channelId);
         order.setAddressId(addressId);
         order.setState("1");

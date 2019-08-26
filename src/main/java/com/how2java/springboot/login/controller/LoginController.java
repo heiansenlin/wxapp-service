@@ -46,13 +46,12 @@ public class LoginController {
             Login openId = loginService.getByOpenId(map.get("openid"));
             //如果不存在则新建保存用户
             if (openId==null){
-                Login login = new Login();
-                login.setUuid(UUID.randomUUID().toString());
-                login.setOpenId(map.get("openid"));
-                login.setSessionKey(map.get("session_key"));
-                loginService.save(login);
+                openId.setUuid(UUID.randomUUID().toString());
+                openId.setOpenId(map.get("openid"));
+                openId.setSessionKey(map.get("session_key"));
+                loginService.save(openId);
             }
-            return "success";
+            return openId.getUuid();
         } catch (Exception e) {
             e.printStackTrace();
         }

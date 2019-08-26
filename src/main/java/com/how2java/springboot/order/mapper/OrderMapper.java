@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface OrderMapper {
 
-    @Insert("insert into order_table (id,orderSn,openId,channelId,addressId,couponId,money,state,createTime) " +
-            "values (,#{o.id},#{o.orderSn},#{o.openId},#{o.channelId},#{o.addressId},#{o.couponId},#{o.money},#{o.state},#{o.createTime})")
+    @Insert("insert into order_table (id,orderSn,userId,channelId,addressId,couponId,money,state,createTime) " +
+            "values (#{o.id},#{o.orderSn},#{o.userId},#{o.channelId},#{o.addressId},#{o.couponId},#{o.money},#{o.state},#{o.createTime})")
     int save(@Param("o") Order order);
 }

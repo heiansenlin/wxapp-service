@@ -14,7 +14,7 @@ public class OrderController {
 
     @RequestMapping("save")
     @ResponseBody
-    public boolean saveOrder(String goodsAndNum,String openId,String channelId,String addressId){
-        return true;
+    public int saveOrder(String goodsAndNum,String userId,String channelId,String addressId){
+        return service.save(goodsAndNum, userId, channelId, addressId);
     }
 }

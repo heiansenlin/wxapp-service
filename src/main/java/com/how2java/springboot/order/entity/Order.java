@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class Order {
     private String id;          //主键
     private String orderSn;     //订单编号
-    private String openId;      //用户openId
+    private String userId;      //userId
     private String channelId;   //门店主键
     private String addressId;   //地址主键
     private String couponId;    //票券主键
@@ -35,12 +35,12 @@ public class Order {
         this.orderSn = orderSn;
     }
 
-    public String getOpenId() {
-        return openId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setOpenId(String openId) {
-        this.openId = openId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getChannelId() {
