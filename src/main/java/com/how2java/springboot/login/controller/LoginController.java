@@ -46,6 +46,7 @@ public class LoginController {
             Login openId = loginService.getByOpenId(map.get("openid"));
             //如果不存在则新建保存用户
             if (openId==null){
+                openId = new Login();
                 openId.setUuid(UUID.randomUUID().toString());
                 openId.setOpenId(map.get("openid"));
                 openId.setSessionKey(map.get("session_key"));

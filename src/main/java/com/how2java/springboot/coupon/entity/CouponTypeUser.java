@@ -1,5 +1,8 @@
 package com.how2java.springboot.coupon.entity;
 
+/**
+ * 用户票券详情表
+ */
 public class CouponTypeUser {
     private String id;          //主键
     private String couponId;    //票券id
