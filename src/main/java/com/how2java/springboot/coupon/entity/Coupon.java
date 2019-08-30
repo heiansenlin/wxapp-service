@@ -1,5 +1,7 @@
 package com.how2java.springboot.coupon.entity;
 
+import java.util.List;
+
 /**
  * 票券
  */
@@ -10,7 +12,7 @@ public class Coupon {
     private String channelId;   //门店Id
     private String goodsId;     //对应商品Id
     private String delFlag;     //是否作废
-    private CouponType couponType;
+    private List<CouponType> couponType;
 
     public Coupon() {
     }
@@ -63,11 +65,11 @@ public class Coupon {
         this.delFlag = delFlag;
     }
 
-    public CouponType getCouponType() {
+    public List<CouponType> getCouponType() {
         return couponType;
     }
 
-    public void setCouponType(CouponType couponType) {
+    public void setCouponType(List<CouponType> couponType) {
         this.couponType = couponType;
     }
 }

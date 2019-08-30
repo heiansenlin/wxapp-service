@@ -19,6 +19,7 @@ public class CouponController {
     @RequestMapping("/findAllByChannelId")
     @ResponseBody
     public List<Coupon> findAllByChannelId(@RequestParam("channelId") String channelId){
-        return service.findAllByChannelId(channelId);
+        List<Coupon> allByChannelId = service.findAllByChannelId(channelId);
+        return allByChannelId;
     }
 }
