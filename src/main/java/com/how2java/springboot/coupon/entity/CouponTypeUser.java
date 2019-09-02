@@ -8,6 +8,7 @@ public class CouponTypeUser {
     private String couponId;    //票券id
     private String openId;      //用户openid
     private String goodsId;     //商品主键
+    private String money;       //购入价格
     private String num;         //总抵顶次数
     private String useNum;      //使用次数
     private String surNum;      //剩余次数
@@ -46,6 +47,14 @@ public class CouponTypeUser {
 
     public void setGoodsId(String goodsId) {
         this.goodsId = goodsId;
+    }
+
+    public String getMoney() {
+        return money;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
     }
 
     public String getNum() {
