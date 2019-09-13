@@ -7,6 +7,7 @@ public class OrderGoods {
     private String orderSn;
     private String goodsId;
     private String num;
+    private String couponId;    //票券主键
     private LocalDateTime createTime;
 
     public OrderGoods() {
@@ -50,5 +51,13 @@ public class OrderGoods {
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
+    }
+
+    public String getCouponId() {
+        return couponId;
+    }
+
+    public void setCouponId(String couponId) {
+        this.couponId = couponId;
     }
 }

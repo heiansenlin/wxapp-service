@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface GoodsService {
     List<Goods> findAllByChannelId(String channelId,String categoryId);
+
+    Goods getByGoodsId(String goodsId);
 }

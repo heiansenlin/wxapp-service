@@ -6,6 +6,7 @@ package com.how2java.springboot.coupon.entity;
 public class CouponTypeUser {
     private String id;          //主键
     private String couponId;    //票券id
+    private String couponName;  //票券名称
     private String openId;      //用户openid
     private String goodsId;     //商品主键
     private String money;       //购入价格
@@ -31,6 +32,14 @@ public class CouponTypeUser {
 
     public void setCouponId(String couponId) {
         this.couponId = couponId;
+    }
+
+    public String getCouponName() {
+        return couponName;
+    }
+
+    public void setCouponName(String couponName) {
+        this.couponName = couponName;
     }
 
     public String getOpenId() {

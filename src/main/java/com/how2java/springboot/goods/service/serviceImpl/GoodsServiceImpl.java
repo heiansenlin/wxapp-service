@@ -16,4 +16,11 @@ public class GoodsServiceImpl implements GoodsService {
     public List<Goods> findAllByChannelId(String channelId,String categoryId) {
         return mapper.findAllByChannelId(channelId,categoryId);
     }
+
+    @Override
+    public Goods getByGoodsId(String goodsId) {
+        return mapper.getByGoodsId(goodsId);
+    }
+
+
 }
