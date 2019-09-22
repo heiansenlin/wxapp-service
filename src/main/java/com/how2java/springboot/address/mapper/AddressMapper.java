@@ -17,4 +17,7 @@ public interface AddressMapper {
     @Insert("insert into address_table (id,address,userid,province,city,country)" +
             " values (#{a.id},#{a.address},#{a.userid},#{a.province},#{a.city},#{a.country})")
     int save (@Param("a") Address address);
+
+    @Select("select * from address_table where id = #{id}")
+    Address getById(String id);
 }

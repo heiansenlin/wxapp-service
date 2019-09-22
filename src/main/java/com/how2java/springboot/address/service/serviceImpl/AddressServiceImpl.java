@@ -22,5 +22,12 @@ public class AddressServiceImpl implements AddressService {
     public int save(Address address) {
         return mapper.save(address);
     }
+
+    @Override
+    public Address getById(String id) {
+        return mapper.getById(id);
+    }
+
+
 }
 

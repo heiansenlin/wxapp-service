@@ -1,5 +1,6 @@
 package com.how2java.springboot.order.service.serviceImpl;
 
+import com.how2java.springboot.address.service.AddressService;
 import com.how2java.springboot.coupon.service.CouponTypeUserService;
 import com.how2java.springboot.goods.entity.Goods;
 import com.how2java.springboot.goods.service.GoodsService;
@@ -31,6 +32,8 @@ public class OrderServiceImpl implements OrderService {
     private CouponTypeUserService couponTypeUserService;
     @Autowired
     private GoodsService goodsService;
+    @Autowired
+    private AddressService addressService;
 
     @Override
     @Transactional
@@ -88,5 +91,11 @@ public class OrderServiceImpl implements OrderService {
         order.setState("1");
         order.setCreateTime(now);
         return mapper.save(order);
+    }
+
+    @Override
+    public List<Order> findByPeiSongId(String id) {
+        List<Order> byPeiSongId = mapper.findByPeiSongId(id);
+        return null;
     }
 }

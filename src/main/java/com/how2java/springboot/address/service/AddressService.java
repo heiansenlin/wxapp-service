@@ -8,4 +8,6 @@ public interface AddressService {
     List<Address> findAllByOpenId(String userid);
 
     int save (Address address);
+
+    Address getById(String id);
 }
