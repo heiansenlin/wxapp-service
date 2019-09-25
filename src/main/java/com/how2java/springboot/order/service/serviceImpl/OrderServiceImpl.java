@@ -1,6 +1,8 @@
 package com.how2java.springboot.order.service.serviceImpl;
 
 import com.how2java.springboot.address.service.AddressService;
+import com.how2java.springboot.channel.entity.ChannelPeople;
+import com.how2java.springboot.channel.service.ChannelPeopleService;
 import com.how2java.springboot.coupon.service.CouponTypeUserService;
 import com.how2java.springboot.goods.entity.Goods;
 import com.how2java.springboot.goods.service.GoodsService;
@@ -16,10 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -34,6 +34,8 @@ public class OrderServiceImpl implements OrderService {
     private GoodsService goodsService;
     @Autowired
     private AddressService addressService;
+    @Autowired
+    private ChannelPeopleService channelPeopleService;
 
     @Override
     @Transactional
@@ -82,6 +84,13 @@ public class OrderServiceImpl implements OrderService {
             save = orderGoodsService.save(orderGoods);
         }
         Order order = new Order();
+        List<Map<String, String>> byChannelId = findByChannelId(channelId);
+        if (byChannelId==null||byChannelId.size()==0){
+            List<ChannelPeople> byChannelId1 = channelPeopleService.findByChannelId(channelId);
+            order.setPeiSongId(byChannelId1.get(0).getUserId());
+        }else {
+            order.setPeiSongId(byChannelId.get(0).get("peiSongId"));
+        }
         order.setId(UUID.randomUUID().toString());
         order.setOrderSn(Long.toString(orderSn));
         order.setUserId(userId);
@@ -95,7 +104,18 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> findByPeiSongId(String id) {
-        List<Order> byPeiSongId = mapper.findByPeiSongId(id);
-        return null;
+        return mapper.findByPeiSongId(id);
     }
+
+    @Override
+    public List<Map<String,String>> findByChannelId(String channelId) {
+        List<Map<String, String>> byChannelId = mapper.findByChannelId(channelId);
+        if (byChannelId!=null&&byChannelId.size()>0){
+            return byChannelId.stream().sorted(Comparator.comparing(m -> m.get("num"))).collect(Collectors.toList());
+        }else {
+            return new ArrayList<>();
+        }
+    }
+
+
 }
